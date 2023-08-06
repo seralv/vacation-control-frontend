@@ -1,1 +1,37 @@
-<p>employee-list works!</p>
+<div class="container mt-4">
+    <h2>Lista de Empleados</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-primary" routerLink="/add-employee">Agregar Nuevo Empleado</button>
+        <input type="text" class="form-control" placeholder="Buscar empleado..." [(ngModel)]="searchTerm" />
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre del Empleado</th>
+                <th>Fecha de Ingreso</th>
+                <th>Días Disponibles de Vacación</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of filteredEmployees">
+                <td>{{ employee.name }} {{ employee.last_name }}</td>
+                <td>{{ employee.entry_date | date }}</td>
+                <td>{{ employee.vacation_days }}</td>
+                <td>{{ employee.isOnVacation ? 'Vacación' : 'Trabajando' }}</td>
+                <td>
+                    <button class="btn btn-sm btn-success" (click)="assignVacation(employee)">
+                        <i class="bi bi-calendar-event"></i> Asignar Vacación
+                    </button>
+                    <button class="btn btn-sm btn-info" (click)="editEmployee(employee)">
+                        <i class="bi bi-pencil"></i> Editar
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee)">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
