@@ -21,14 +21,14 @@
                 <td>{{ employee.vacation_days }}</td>
                 <td>{{ employee.isOnVacation ? 'Vacación' : 'Trabajando' }}</td>
                 <td>
-                    <button class="btn btn-sm btn-success" (click)="assignVacation(employee)">
-                        <i class="bi bi-calendar-event"></i> Asignar Vacación
+                    <button class="btn btn-sm btn-info" title="Asignar vacación" (click)="assignVacation(employee)">
+                        <i class="bi bi-calendar-event"></i>
                     </button>
-                    <button class="btn btn-sm btn-info" (click)="editEmployee(employee)">
-                        <i class="bi bi-pencil"></i> Editar
+                    <button class="btn btn-sm btn-warning mx-1" title="Editar empleado" (click)="editEmployee(employee)">
+                        <i class="bi bi-pencil"></i>
                     </button>
-                    <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee)">
-                        <i class="bi bi-trash"></i> Eliminar
+                    <button class="btn btn-sm btn-danger" title="Eliminar empleado" (click)="deleteEmployee(employee)">
+                        <i class="bi bi-trash"></i>
                     </button>
                 </td>
             </tr>
