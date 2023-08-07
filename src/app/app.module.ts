@@ -11,6 +11,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { AssignVacationComponent } from './assign-vacation/assign-vacation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddEmployeeComponent,
     EmployeeDetailsComponent,
     EditEmployeeComponent,
-    AssignVacationComponent
+    AssignVacationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

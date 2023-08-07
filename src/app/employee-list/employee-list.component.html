@@ -19,7 +19,7 @@
                 <td>{{ employee.name }} {{ employee.last_name }}</td>
                 <td>{{ employee.entry_date | date }}</td>
                 <td>{{ employee.vacation_days }}</td>
-                <td [ngClass]="{ 'text-success font-weight-bold': employee.isOnVacation }">{{ employee.isOnVacation ? 'Vacación' : 'Trabajando' }}</td>
+                <td [ngClass]="{ 'text-success font-weight-bold': employee.is_on_vacation }">{{ employee.is_on_vacation ? 'Vacación' : 'Trabajando' }}</td>
                 <td>
                     <button class="btn btn-sm btn-info" title="Asignar vacación" (click)="assignVacation(employee)">
                         <i class="bi bi-calendar-event"></i>

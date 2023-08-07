@@ -22,6 +22,7 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
       this.applyFilter();
+      console.log(data[2])
     });
   }
 
