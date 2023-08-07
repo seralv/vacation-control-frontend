@@ -1,8 +1,9 @@
 <div class="container mt-4">
     <h2>Lista de Empleados</h2>
+    <button class="btn btn-primary mb-2" routerLink="/add-employee">Agregar Nuevo Empleado</button>
     <div class="d-flex justify-content-between mb-3">
-        <button class="btn btn-primary" routerLink="/add-employee">Agregar Nuevo Empleado</button>
-        <input type="text" class="form-control" placeholder="Buscar empleado..." [(ngModel)]="searchTerm" />
+        <!-- <input type="text" class="form-control" placeholder="Buscar empleado..." [(ngModel)]="searchTerm" /> -->
+        <input type="text" class="form-control" placeholder="Buscar empleado..." [formControl]="searchTerm" />
     </div>
     <table class="table table-striped">
         <thead>

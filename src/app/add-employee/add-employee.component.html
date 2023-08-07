@@ -1,1 +1,22 @@
-<p>add-employee works!</p>
+<div class="container mt-4">
+    <h2>Agregar Nuevo Empleado</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control mb-2" formControlName="name" />
+            <label>Apellido</label>
+            <input type="text" class="form-control mb-2" formControlName="last_name" />
+            <label>Dirección</label>
+            <input type="text" class="form-control mb-2" formControlName="address" />
+            <label>Teléfono</label>
+            <input type="text" class="form-control mb-2" formControlName="phone" />
+            <label>Posición</label>
+            <input type="text" class="form-control mb-2" formControlName="position" />
+            <label>Fecha de ingreso</label>
+            <input type="text" class="form-control mb-2" formControlName="entry_date" />
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>

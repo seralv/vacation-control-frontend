@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import Swal from 'sweetalert2';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,12 +13,18 @@ import Swal from 'sweetalert2';
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
   filteredEmployees: any[] = [];
-  searchTerm: string = '';
+  searchTerm = new FormControl('');
 
-  constructor(private router: Router, private employeeService: EmployeeService) {}
+  constructor(private router: Router, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.fetchEmployees();
+
+    this.searchTerm.valueChanges
+    .pipe(debounceTime(300), distinctUntilChanged())
+    .subscribe(() => {
+      this.applyFilter();
+    });
   }
 
   fetchEmployees(): void {
@@ -27,8 +35,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   applyFilter(): void {
-    this.filteredEmployees = this.employees.filter(employee =>
-      employee.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    const searchTerm = this.searchTerm.value?.toLowerCase();
+    this.filteredEmployees = this.employees.filter(
+      employee =>
+        employee.name.toLowerCase().includes(searchTerm) ||
+        employee.last_name.toLowerCase().includes(searchTerm)
     );
   }
 
@@ -44,10 +55,10 @@ export class EmployeeListComponent implements OnInit {
       },
       buttonsStyling: false
     });
-  
+
     swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
-      text: `No podrás revertir esto: ${employee.name} será eliminado.`,
+      text: `No podrás revertir esto: ${employee.name} se eliminará.`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Eliminar',
@@ -66,7 +77,7 @@ export class EmployeeListComponent implements OnInit {
       }
     });
   }
-  
+
 
   assignVacation(employee: any): void {
     // Lógica para asignar vacación
