@@ -4,7 +4,7 @@
         <button class="btn btn-primary" routerLink="/add-employee">Agregar Nuevo Empleado</button>
         <input type="text" class="form-control" placeholder="Buscar empleado..." [(ngModel)]="searchTerm" />
     </div>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nombre del Empleado</th>
@@ -19,7 +19,7 @@
                 <td>{{ employee.name }} {{ employee.last_name }}</td>
                 <td>{{ employee.entry_date | date }}</td>
                 <td>{{ employee.vacation_days }}</td>
-                <td>{{ employee.isOnVacation ? 'Vacación' : 'Trabajando' }}</td>
+                <td [ngClass]="{ 'text-success font-weight-bold': employee.isOnVacation }">{{ employee.isOnVacation ? 'Vacación' : 'Trabajando' }}</td>
                 <td>
                     <button class="btn btn-sm btn-info" title="Asignar vacación" (click)="assignVacation(employee)">
                         <i class="bi bi-calendar-event"></i>
