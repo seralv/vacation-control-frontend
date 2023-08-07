@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-list',
@@ -22,7 +23,6 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
       this.applyFilter();
-      console.log(data[2])
     });
   }
 
@@ -37,13 +37,36 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteEmployee(employee: any): void {
-    const confirmed = confirm(`¿Estás seguro de eliminar a ${employee.name}?`);
-    if (confirmed) {
-      this.employeeService.deleteEmployee(employee.id).subscribe(() => {
-        this.fetchEmployees();
-      });
-    }
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success mx-2',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+  
+    swalWithBootstrapButtons.fire({
+      title: '¿Estás seguro?',
+      text: `No podrás revertir esto: ${employee.name} será eliminado.`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.employeeService.deleteEmployee(employee.id).subscribe(() => {
+          this.fetchEmployees();
+          swalWithBootstrapButtons.fire(
+            'Eliminado',
+            `${employee.name} ha sido eliminado.`,
+            'success'
+          );
+        });
+      }
+    });
   }
+  
 
   assignVacation(employee: any): void {
     // Lógica para asignar vacación
