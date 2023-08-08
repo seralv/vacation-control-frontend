@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
+import { VacationService } from '../vacation.service';
 import Swal from 'sweetalert2';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
@@ -15,7 +16,11 @@ export class EmployeeListComponent implements OnInit {
   filteredEmployees: any[] = [];
   searchTerm = new FormControl('');
 
-  constructor(private router: Router, private employeeService: EmployeeService) { }
+  constructor(
+    private router: Router, 
+    private employeeService: EmployeeService,
+    private vacationService: VacationService,
+    ) { }
 
   ngOnInit(): void {
     this.fetchEmployees();
@@ -30,7 +35,15 @@ export class EmployeeListComponent implements OnInit {
   fetchEmployees(): void {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
-      this.applyFilter();
+
+      this.vacationService.getVacations().subscribe(vacations => {
+        this.employees.forEach(employee => {
+          const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
+          employee.vacations = employeeVacations;
+        });
+        
+        this.applyFilter();
+      });
     });
   }
 
@@ -39,7 +52,8 @@ export class EmployeeListComponent implements OnInit {
     this.filteredEmployees = this.employees.filter(
       employee =>
         employee.name.toLowerCase().includes(searchTerm) ||
-        employee.last_name.toLowerCase().includes(searchTerm)
+        employee.last_name.toLowerCase().includes(searchTerm) ||
+        (employee.is_on_vacation ? 'Vacación' : 'Trabajando').toLowerCase().includes(searchTerm ?? '')
     );
   }
 

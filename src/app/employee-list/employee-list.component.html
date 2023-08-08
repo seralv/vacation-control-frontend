@@ -10,7 +10,7 @@
             <tr>
                 <th>Nombre del Empleado</th>
                 <th>Fecha de Ingreso</th>
-                <th>Días Disponibles de Vacación</th>
+                <th>Días disponibles</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -19,8 +19,8 @@
             <tr *ngFor="let employee of filteredEmployees">
                 <td>{{ employee.name }} {{ employee.last_name }}</td>
                 <td>{{ employee.entry_date | date }}</td>
-                <td>{{ employee.vacation_days }}</td>
-                <td [ngClass]="{ 'text-success font-weight-bold': employee.is_on_vacation }">{{ employee.is_on_vacation ? 'Vacación' : 'Trabajando' }}</td>
+                <td>{{ employee.remaining_vacation_days }}</td>
+                <td [ngClass]="{ 'text-danger fw-bold': employee.is_on_vacation }">{{ employee.is_on_vacation ? 'Vacación' : 'Trabajando' }}</td>
                 <td>
                     <button class="btn btn-sm btn-info" title="Asignar vacación" (click)="assignVacation(employee)">
                         <i class="bi bi-calendar-event"></i>
