@@ -36,4 +36,8 @@ export class AddEmployeeComponent implements OnInit {
       });
     }
   }
+
+  onCancel() {
+    this.router.navigate(['/']);
+  }
 }
