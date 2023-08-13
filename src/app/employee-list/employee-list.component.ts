@@ -35,6 +35,8 @@ export class EmployeeListComponent implements OnInit {
   fetchEmployees(): void {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
+      console.log('employees-->', this.employees);
+
 
       this.vacationService.getVacations().subscribe(vacations => {
         this.employees.forEach(employee => {

@@ -12,7 +12,7 @@ export class AddEmployeeComponent implements OnInit {
   employeeForm!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
     private router: Router
     ) {}
@@ -30,11 +30,23 @@ export class AddEmployeeComponent implements OnInit {
 
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      this.employeeService.createEmployee(this.employeeForm.value).subscribe(() => {
+      const formData = { ...this.employeeForm.value };
+      console.log('formData-->', formData);
+
+      //formData.work_vacation.entry_date = this.employeeForm.get('entry_date').value;
+
+      this.employeeService.createEmployee(formData).subscribe(() => {
         // Lógica después de agregar el empleado (redirección, notificación, etc.)
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       });
     }
+
+    //if (this.employeeForm.valid) {
+    //  this.employeeService.createEmployee(this.employeeForm.value).subscribe(() => {
+    //    // Lógica después de agregar el empleado (redirección, notificación, etc.)
+    //    this.router.navigate(['/'])
+    //  });
+    //}
   }
 
   onCancel() {
