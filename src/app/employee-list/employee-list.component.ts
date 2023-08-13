@@ -17,7 +17,7 @@ export class EmployeeListComponent implements OnInit {
   searchTerm = new FormControl('');
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private employeeService: EmployeeService,
     private vacationService: VacationService,
     ) { }
@@ -36,14 +36,14 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
 
-      this.vacationService.getVacations().subscribe(vacations => {
-        this.employees.forEach(employee => {
-          const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
-          employee.vacations = employeeVacations;
-        });
-        
-        this.applyFilter();
-      });
+      //this.vacationService.getVacations().subscribe(vacations => {
+        //this.employees.forEach(employee => {
+          //const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
+          //employee.vacations = employeeVacations;
+        //});
+
+        //this.applyFilter();
+      //});
     });
   }
 
