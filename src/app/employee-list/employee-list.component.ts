@@ -35,10 +35,9 @@ export class EmployeeListComponent implements OnInit {
   fetchEmployees(): void {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
-      this.applyFilter();
 
       this.vacationService.getVacations().subscribe(vacations => {
-        this.filteredEmployees.forEach(employee => {
+        this.employees.forEach(employee => {
           const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
           employee.vacation = employeeVacations;
         });
@@ -54,7 +53,8 @@ export class EmployeeListComponent implements OnInit {
       employee =>
         employee.name.toLowerCase().includes(searchTerm) ||
         employee.last_name.toLowerCase().includes(searchTerm) ||
-        (employee.is_on_vacation ? 'Vacación' : 'Trabajando').toLowerCase().includes(searchTerm ?? '')
+        (employee.work_information.state.toLowerCase().includes(searchTerm) ||
+        (employee.work_information.state === 'vacation' ? 'vacación' : 'trabajando').toLowerCase().includes(searchTerm ?? ''))
     );
   }
 
