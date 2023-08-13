@@ -35,15 +35,16 @@ export class EmployeeListComponent implements OnInit {
   fetchEmployees(): void {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
+      this.applyFilter();
 
-      //this.vacationService.getVacations().subscribe(vacations => {
-        //this.employees.forEach(employee => {
-          //const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
-          //employee.vacations = employeeVacations;
-        //});
+      this.vacationService.getVacations().subscribe(vacations => {
+        this.filteredEmployees.forEach(employee => {
+          const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
+          employee.vacation = employeeVacations;
+        });
 
-        //this.applyFilter();
-      //});
+        this.applyFilter();
+      });
     });
   }
 
