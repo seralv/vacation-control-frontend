@@ -54,9 +54,9 @@ export class EmployeeListComponent implements OnInit {
     this.filteredEmployees = this.employees.filter(
       employee =>
         employee.name.toLowerCase().includes(searchTerm) ||
-        employee.last_name.toLowerCase().includes(searchTerm) ||
-        (employee.work_information.state.toLowerCase().includes(searchTerm) ||
-        (employee.work_information.state === 'vacation' ? 'vacación' : 'trabajando').toLowerCase().includes(searchTerm ?? ''))
+        employee.lastName.toLowerCase().includes(searchTerm) ||
+        (employee.workInformation.state.toLowerCase().includes(searchTerm) ||
+        (employee.workInformation.state === 'vacation' ? 'vacación' : 'trabajando').toLowerCase().includes(searchTerm ?? ''))
     );
   }
 

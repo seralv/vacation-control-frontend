@@ -17,10 +17,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let employee of filteredEmployees">
-                <td>{{ employee.name }} {{ employee.last_name }}</td>
-                <td>{{ employee.work_information.entry_date | date }}</td>
-                <td>{{ employee.work_information.remaining_days }}</td>
-                <td [ngClass]="{ 'text-danger fw-bold': employee.work_information.state === 'vacation' }">{{ employee.work_information.state }}</td>
+                <td>{{ employee.name }} {{ employee.lastName }}</td>
+                <td>{{ employee.workInformation.entry_date }}</td>
+                <td>{{ employee.workInformation.remainingDays }}</td>
+                <td [ngClass]="{ 'text-danger fw-bold': employee.workInformation.state === 'vacation' }">{{ employee.workInformation.state }}</td>
                 <td>
                     <button class="btn btn-sm btn-info" title="Asignar vacación" (click)="assignVacation(employee)">
                         <i class="bi bi-calendar-event"></i>
