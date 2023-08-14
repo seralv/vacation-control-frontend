@@ -38,14 +38,14 @@ export class EmployeeListComponent implements OnInit {
       console.log('employees-->', this.employees);
 
 
-      this.vacationService.getVacations().subscribe(vacations => {
-        this.employees.forEach(employee => {
-          const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
-          employee.vacation = employeeVacations;
-        });
+      // this.vacationService.getVacations().subscribe(vacations => {
+      //   this.employees.forEach(employee => {
+      //     const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
+      //     employee.vacation = employeeVacations;
+      //   });
 
-        this.applyFilter();
-      });
+        // this.applyFilter();
+      // });
     });
   }
 
@@ -97,6 +97,7 @@ export class EmployeeListComponent implements OnInit {
 
 
   assignVacation(employee: any): void {
-    // Lógica para asignar vacación
+    this.employeeService.assignEmploye(employee);
+    this.router.navigate(['/assign-vacation', employee]);
   }
 }

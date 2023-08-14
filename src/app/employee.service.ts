@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EmployeeService {
   private baseUrl = 'http://localhost:8000/api/employees';
-
+  private employee: any;
   constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<any[]> {
@@ -28,5 +28,13 @@ export class EmployeeService {
 
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}${id}/`);
+  }
+
+  assignEmploye(data: any) {
+    this.employee = data;
+  }
+
+  getEmployeeCurrent() {
+    return this.employee;
   }
 }
