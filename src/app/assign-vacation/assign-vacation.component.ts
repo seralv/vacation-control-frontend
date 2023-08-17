@@ -39,8 +39,8 @@ export class AssignVacationComponent implements OnInit {
 
   calculardaysTaken() {
     console.log("hola")
-    const fechaInicio = new Date(this.vacationForm.get('initDate').value);
-    const fechaFin = new Date(this.vacationForm.get('endDate').value);
+    const fechaInicio = new Date(this.vacationForm.get('initDate')?.value);
+    const fechaFin = new Date(this.vacationForm.get('endDate')?.value);
 
     if (fechaInicio && fechaFin) {
       const diferencia = Math.abs(fechaFin.getTime() - fechaInicio.getTime());
