@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let employee of employees">
+            <tr *ngFor="let employee of filteredEmployees">
                 <td>{{ employee.name }} {{ employee.lastName }}</td>
                 <td>{{ employee.workInformation.entry_date }}</td>
                 <td>{{ employee.workInformation.remainingDays }}</td>
