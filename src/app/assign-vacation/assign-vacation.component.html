@@ -1,5 +1,5 @@
 <div class="container mt-4">
-    <h2>Agregar Nuevo Empleado</h2>
+    <h2>Asignar vacación</h2>
     <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Nombre</label>
@@ -22,33 +22,34 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-danger mx-2" (click)="onCancel()">Cancelar</button>
     </form>
 </div>
 
 <!-- <div class="container">
     <h2>Asignar Vacaciones</h2>
-    
+
     <form>
       <div class="mb-3">
         <label for="nombreEmpleado" class="form-label">Nombre del Empleado</label>
         <input type="text" class="form-control" id="nombreEmpleado" name="nombreEmpleado" required>
       </div>
-      
+
       <div class="mb-3">
         <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
         <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
       </div>
-      
+
       <div class="mb-3">
         <label for="fechaFin" class="form-label">Fecha de Fin</label>
         <input type="date" class="form-control" id="fechaFin" name="fechaFin" required>
       </div>
-      
+
       <div class="mb-3">
         <label for="comentarios" class="form-label">Comentarios</label>
         <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
       </div>
-      
+
       <button type="submit" class="btn btn-primary">Asignar Vacaciones</button>
     </form>
   </div>

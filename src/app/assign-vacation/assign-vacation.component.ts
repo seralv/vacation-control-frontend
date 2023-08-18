@@ -20,7 +20,7 @@ export class AssignVacationComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit(): void {
-    
+
     this.vacationForm = this.formBuilder.group({
       name: ['', Validators.required],
       initDate: ['', Validators.required],
@@ -66,5 +66,9 @@ export class AssignVacationComponent implements OnInit {
         this.router.navigate(['/']);
       });
     }
+  }
+
+  onCancel() {
+    this.router.navigate(['/']);
   }
 }
