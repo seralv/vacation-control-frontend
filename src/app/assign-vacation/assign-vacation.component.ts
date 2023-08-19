@@ -13,6 +13,8 @@ import { VacationService } from '../vacation.service';
 })
 export class AssignVacationComponent implements OnInit {
   vacationForm!: FormGroup;
+  employeeFullName: string = '';
+  employeePosition: string = '';
 
   constructor(private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
@@ -30,11 +32,15 @@ export class AssignVacationComponent implements OnInit {
     this.vacationForm.get('initDate')?.valueChanges.subscribe(() => this.calculardaysTaken());
     this.vacationForm.get('endDate')?.valueChanges.subscribe(() => this.calculardaysTaken());
     this.vacationForm.get('name')?.setValue(this.employeeService.getEmployeeCurrent().name);
+    const employeeCurrent = this.employeeService.getEmployeeCurrent();
+    this.employeeFullName = `${ employeeCurrent.name  } ${ employeeCurrent.lastName }`;
+    this.employeePosition = this.employeeService.getEmployeeCurrent().position;
+
   }
 
   calcular() {
     const fechaFin = this.vacationForm.get('name')?.value;
-    console.log(fechaFin)
+    console.log('fechaFin-->', fechaFin)
   }
 
   calculardaysTaken() {
