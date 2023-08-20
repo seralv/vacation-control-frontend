@@ -14,8 +14,14 @@
         </div>
         <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
           <div class="row mt-2">
-            <div class="col-md-6"><label class="labels">Fecha de inicio</label><input type="date" class="form-control" id="initDate" formControlName="initDate" name="initDate" required></div>
-            <div class="col-md-6"><label class="labels">Fecha de fin</label><input type="date" class="form-control" id="endDate" formControlName="endDate" name="endDate" required></div>
+            <div class="col-md-6">
+              <label class="labels">Fecha de inicio</label>
+              <input type="date" class="form-control" id="initDate" formControlName="initDate" name="initDate" required>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">Fecha de fin</label>
+              <input type="date" class="form-control" id="endDate" formControlName="endDate" name="endDate" required>
+            </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-12 d-grid gap-2">
@@ -27,11 +33,31 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="p-3 py-5">
-        <!-- <h4 class="fw-bold color-text-days">{{ daysRemaining }} días disponibles</h4> -->
-        <h4 [ngClass]="{'text-danger': daysRemaining === '0', 'color-text-days': daysRemaining !== '0'}" class="fw-bold">
+      <div class="row p-3 py-5">
+        <h4 [ngClass]="{'text-danger': daysRemaining === '0', 'text-info': daysRemaining !== '0'}" class="fw-bold col-md-12 text-center">
           {{ daysRemaining }} días disponibles
         </h4>
+        <div [hidden]="dateActivate === false" class="row p-0">
+          <div class="col-md-5 p-2">
+            <div class="text-secondary text-center fw-semibold w-100">Desde</div>
+            <div class="bg-white shadow-sm rounded-4 card">
+              <strong class="bg-danger card-header text-center text-white rounded-top-3">{{ monthInicio }}</strong>
+              <span class="d-block text-dark text-center fw-bold display-4 pt-1">{{ dateInicio }}</span>
+              <em class="text-danger text-center fw-semibold fst-talic pb-1">{{ dayInicio }}</em>
+            </div>
+          </div>
+          <div class="col-md-1 d-flex align-items-center pt-5">
+            <h1 class="mx-auto text-secondary">-</h1>
+          </div>
+          <div class="col-md-5 p-2">
+            <div class="text-secondary text-center fw-semibold w-100">Hasta</div>
+            <div class="bg-white shadow-sm rounded-4 card">
+              <strong class="bg-danger card-header text-center text-white rounded-top-3">{{ monthFin }}</strong>
+              <span class="d-block text-dark text-center fw-bold display-4 pt-1">{{ dateFin }}</span>
+              <em class="text-danger text-center fw-semibold fst-talic pb-1">{{ dayFin }}</em>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

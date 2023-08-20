@@ -16,6 +16,13 @@ export class AssignVacationComponent implements OnInit {
   employeeFullName: string = '';
   employeePosition: string = '';
   daysRemaining: string = '';
+  dateActivate: boolean = false;
+  dayInicio: string = '';
+  monthInicio: string = '';
+  dateInicio: number = 0;
+  dayFin: string = '';
+  monthFin: string = '';
+  dateFin: number = 0;
 
   constructor(private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
@@ -32,26 +39,30 @@ export class AssignVacationComponent implements OnInit {
     })
     this.vacationForm.get('initDate')?.valueChanges.subscribe(() => this.calculardaysTaken());
     this.vacationForm.get('endDate')?.valueChanges.subscribe(() => this.calculardaysTaken());
-    this.vacationForm.get('name')?.setValue(this.employeeService.getEmployeeCurrent().name);
+    // this.vacationForm.get('name')?.setValue(this.employeeService.getEmployeeCurrent().name);
     const employeeCurrent = this.employeeService.getEmployeeCurrent();
     this.employeeFullName = `${ employeeCurrent.name  } ${ employeeCurrent.lastName }`;
     this.employeePosition = this.employeeService.getEmployeeCurrent().position;
     this.daysRemaining = `${ employeeCurrent.workInformation.remainingDays }`;
-    // const vacationCurrent = this.vacationService.getVacationCurrent();
-    console.log('employeePosition-->', employeeCurrent);
-
 
   }
 
   calcular() {
     const fechaFin = this.vacationForm.get('name')?.value;
-    console.log('fechaFin-->', fechaFin)
   }
 
   calculardaysTaken() {
-    console.log("hola")
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const fechaInicio = new Date(this.vacationForm.get('initDate')?.value);
+    this.dayInicio = days[fechaInicio.getDay()];
+    this.monthInicio = months[fechaInicio.getMonth()];
+    this.dateInicio = fechaInicio.getDate();
+
     const fechaFin = new Date(this.vacationForm.get('endDate')?.value);
+    this.dayFin = days[fechaFin.getDay()];
+    this.monthFin = months[fechaFin.getMonth()];
+    this.dateFin = fechaFin.getDate();
 
     if (fechaInicio && fechaFin) {
       const diferencia = Math.abs(fechaFin.getTime() - fechaInicio.getTime());
@@ -60,6 +71,7 @@ export class AssignVacationComponent implements OnInit {
         this.vacationForm.get('daysTaken')?.setValue(0);
       } else {
         this.vacationForm.get('daysTaken')?.setValue(daysTaken);
+        this.dateActivate = true;
       }
     } else {
       this.vacationForm.get('daysTaken')?.setValue('');
