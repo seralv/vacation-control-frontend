@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class VacationService {
   private baseUrl = 'http://localhost:8000/api/work-information';
-
+  private vacation: any;
   constructor(private http: HttpClient) { }
 
   getVacations(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);
+  }
+
+  getVacation(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}${id}/`);
   }
 
   createVacation(vacation: any): Observable<any> {
@@ -29,6 +33,14 @@ export class VacationService {
   getVacationsByEmployee(employeeId: number): Observable<any[]> {
     const url = `${this.baseUrl}?employee=${employeeId}`;
     return this.http.get<any[]>(url);
+  }
+
+  assignVacation(data: any) {
+    this.vacation = data;
+  }
+
+  getVacationCurrent() {
+    return this.vacation;
   }
 
 }

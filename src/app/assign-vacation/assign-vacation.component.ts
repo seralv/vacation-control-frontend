@@ -15,6 +15,7 @@ export class AssignVacationComponent implements OnInit {
   vacationForm!: FormGroup;
   employeeFullName: string = '';
   employeePosition: string = '';
+  daysRemaining: string = '';
 
   constructor(private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
@@ -35,6 +36,10 @@ export class AssignVacationComponent implements OnInit {
     const employeeCurrent = this.employeeService.getEmployeeCurrent();
     this.employeeFullName = `${ employeeCurrent.name  } ${ employeeCurrent.lastName }`;
     this.employeePosition = this.employeeService.getEmployeeCurrent().position;
+    this.daysRemaining = `${ employeeCurrent.workInformation.remainingDays }`;
+    // const vacationCurrent = this.vacationService.getVacationCurrent();
+    console.log('employeePosition-->', employeeCurrent);
+
 
   }
 

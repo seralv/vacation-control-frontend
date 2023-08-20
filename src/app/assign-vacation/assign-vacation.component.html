@@ -18,12 +18,20 @@
             <div class="col-md-6"><label class="labels">Fecha de fin</label><input type="date" class="form-control" id="endDate" formControlName="endDate" name="endDate" required></div>
           </div>
           <div class="row mt-3">
-            <div class="col-md-12">
-              <label class="labels">Días tomados</label>
-              <input type="" name="" value="">
+            <div class="col-md-12 d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 py-5">
+        <!-- <h4 class="fw-bold color-text-days">{{ daysRemaining }} días disponibles</h4> -->
+        <h4 [ngClass]="{'text-danger': daysRemaining === '0', 'color-text-days': daysRemaining !== '0'}" class="fw-bold">
+          {{ daysRemaining }} días disponibles
+        </h4>
       </div>
     </div>
   </div>
