@@ -12,10 +12,6 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { AssignVacationComponent } from './assign-vacation/assign-vacation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
-
-registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [

@@ -18,7 +18,7 @@
         <tbody>
             <tr *ngFor="let employee of filteredEmployees">
                 <td>{{ employee.name }} {{ employee.lastName }}</td>
-                <td>{{ employee.workInformation.entry_date }}</td>
+                <td>{{ employee.workInformation.entryDate }}</td>
                 <td>{{ employee.workInformation.remainingDays }}</td>
                 <td [ngClass]="{ 'text-danger fw-bold': employee.workInformation.state === 'vacation' }">{{ employee.workInformation.state }}</td>
                 <td>

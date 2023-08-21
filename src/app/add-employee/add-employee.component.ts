@@ -20,7 +20,7 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeForm = this.formBuilder.group({
       name: ['', Validators.required],
-      last_name: ['', Validators.required],
+      lastName: ['', Validators.required],
       address: ['', Validators.required],
       phone: ['', Validators.required],
       position: ['', Validators.required],
@@ -31,22 +31,11 @@ export class AddEmployeeComponent implements OnInit {
   onSubmit(): void {
     if (this.employeeForm.valid) {
       const formData = { ...this.employeeForm.value };
-      console.log('formData-->', formData);
-
-      //formData.work_vacation.entry_date = this.employeeForm.get('entry_date').value;
-
       this.employeeService.createEmployee(formData).subscribe(() => {
-        // Lógica después de agregar el empleado (redirección, notificación, etc.)
         this.router.navigate(['/']);
       });
     }
 
-    //if (this.employeeForm.valid) {
-    //  this.employeeService.createEmployee(this.employeeForm.value).subscribe(() => {
-    //    // Lógica después de agregar el empleado (redirección, notificación, etc.)
-    //    this.router.navigate(['/'])
-    //  });
-    //}
   }
 
   onCancel() {

@@ -1,1 +1,22 @@
-<p>edit-employee works!</p>
+<div class="container mt-4">
+    <h2>Actualizar datos del empleado</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control mb-2" formControlName="name" />
+            <label>Apellido</label>
+            <input type="text" class="form-control mb-2" formControlName="lastName" />
+            <label>Dirección</label>
+            <input type="text" class="form-control mb-2" formControlName="address" />
+            <label>Teléfono</label>
+            <input type="text" class="form-control mb-2" formControlName="phone" />
+            <label>Posición</label>
+            <input type="text" class="form-control mb-2" formControlName="position" />
+            <label>Fecha de ingreso</label>
+            <input type="date" class="form-control mb-2" formControlName="entryDate" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-danger mx-2" (click)="onCancel()">Cancelar</button>
+    </form>
+</div>

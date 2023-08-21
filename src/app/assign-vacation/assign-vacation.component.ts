@@ -9,7 +9,7 @@ import { VacationService } from '../vacation.service';
 @Component({
   selector: 'app-assign-vacation',
   templateUrl: './assign-vacation.component.html',
-  styleUrls: ['./assign-vacation.component.css']
+  styleUrls: ['./assign-vacation.component.css'],
 })
 export class AssignVacationComponent implements OnInit {
   vacationForm!: FormGroup;
