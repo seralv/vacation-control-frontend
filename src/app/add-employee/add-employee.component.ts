@@ -31,6 +31,8 @@ export class AddEmployeeComponent implements OnInit {
   onSubmit(): void {
     if (this.employeeForm.valid) {
       const formData = { ...this.employeeForm.value };
+      console.log('formData-->', formData);
+      
       this.employeeService.createEmployee(formData).subscribe(() => {
         this.router.navigate(['/']);
       });

@@ -27,22 +27,13 @@ export class EditEmployeeComponent implements OnInit {
       address: [''],
       phone: [''],
       position: [''],
-      entryDate: ['']
+      entry_date: ['']
     });
 
     const employeeId = this.route.snapshot.params['id'];
     this.employeeService.getEmployee(employeeId).subscribe(
       (employee: any) => {
-        const formattedEntryDate = new Date(employee.workInformation.entryDate).toISOString().substring(0, 10);
-        this.employeeForm.patchValue({
-          name: employee.name,
-          lastName: employee.lastName,
-          address: employee.address,
-          phone: employee.phone,
-          position: employee.position,
-          entryDate: formattedEntryDate
-        }); // Establecer valores iniciales del formulario
-        console.log('Employee-->', employee);        
+        this.employeeForm.patchValue(employee);      
       },
       (error: any) => {
         console.error('Error loading employee details:', error);
