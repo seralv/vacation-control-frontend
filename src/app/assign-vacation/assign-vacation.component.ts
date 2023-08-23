@@ -44,6 +44,8 @@ export class AssignVacationComponent implements OnInit {
     this.employeeFullName = `${ employeeCurrent.name  } ${ employeeCurrent.lastName }`;
     this.employeePosition = this.employeeService.getEmployeeCurrent().position;
     this.daysRemaining = `${ employeeCurrent.workInformation.remainingDays }`;
+    console.log('dateActivate-->', this.dateActivate);
+    
 
   }
 
@@ -72,6 +74,7 @@ export class AssignVacationComponent implements OnInit {
       } else {
         this.vacationForm.get('daysTaken')?.setValue(daysTaken);
         this.dateActivate = true;
+        console.log('dateActivate-->', this.dateActivate);
       }
     } else {
       this.vacationForm.get('daysTaken')?.setValue('');

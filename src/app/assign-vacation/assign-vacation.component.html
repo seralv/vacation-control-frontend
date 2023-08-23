@@ -33,88 +33,33 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="row p-3 py-5">
-        <h4 [ngClass]="{'text-danger': daysRemaining === '0', 'text-info': daysRemaining !== '0'}" class="fw-bold col-md-12 text-center">
+      <div class="pt-3">
+        <h4 [ngClass]="{'text-danger': daysRemaining === '0', 'text-info': daysRemaining !== '0'}"
+          class="fw-bold col-md-12 text-center">
           {{ daysRemaining }} días disponibles
         </h4>
-        <div [hidden]="dateActivate === false" class="row p-0">
-          <div class="col-md-5 p-2">
-            <div class="text-secondary text-center fw-semibold w-100">Desde</div>
-            <div class="bg-white shadow-sm rounded-4 card">
-              <strong class="bg-danger card-header text-center text-white rounded-top-3">{{ monthInicio }}</strong>
-              <span class="d-block text-dark text-center fw-bold display-4 pt-1">{{ dateInicio }}</span>
-              <em class="text-danger text-center fw-semibold fst-talic pb-1">{{ dayInicio }}</em>
-            </div>
+      </div>
+      <div [hidden]="dateActivate === false" class="row d-flex justify-content-center px-4">
+        <div class="col-md-5 p-2">
+          <div class="text-secondary text-center fw-semibold w-100">Desde</div>
+          <div class="bg-white shadow-sm rounded-4 card">
+            <strong class="bg-danger card-header text-center text-white rounded-top-3">{{ monthInicio }}</strong>
+            <span class="d-block text-dark text-center fw-bold display-4 pt-1">{{ dateInicio }}</span>
+            <em class="text-danger text-center fw-semibold fst-talic pb-1">{{ dayInicio }}</em>
           </div>
-          <div class="col-md-1 d-flex align-items-center pt-5">
-            <h1 class="mx-auto text-secondary">-</h1>
-          </div>
-          <div class="col-md-5 p-2">
-            <div class="text-secondary text-center fw-semibold w-100">Hasta</div>
-            <div class="bg-white shadow-sm rounded-4 card">
-              <strong class="bg-danger card-header text-center text-white rounded-top-3">{{ monthFin }}</strong>
-              <span class="d-block text-dark text-center fw-bold display-4 pt-1">{{ dateFin }}</span>
-              <em class="text-danger text-center fw-semibold fst-talic pb-1">{{ dayFin }}</em>
-            </div>
+        </div>
+        <div class="col-md-1 d-flex align-items-center pt-5">
+          <h1 class="mx-auto text-secondary">-</h1>
+        </div>
+        <div class="col-md-5 p-2">
+          <div class="text-secondary text-center fw-semibold w-100">Hasta</div>
+          <div class="bg-white shadow-sm rounded-4 card">
+            <strong class="bg-danger card-header text-center text-white rounded-top-3">{{ monthFin }}</strong>
+            <span class="d-block text-dark text-center fw-bold display-4 pt-1">{{ dateFin }}</span>
+            <em class="text-danger text-center fw-semibold fst-talic pb-1">{{ dayFin }}</em>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div> -->
-  <!--   <h2>{{ employeeFullName }}</h2><span class="text-primary">Asignar vacación</span> -->
-  <!-- </div> -->
-  <!--   <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()"> -->
-  <!--       <div class="form-group"> -->
-  <!--           <label>Nombre</label> -->
-  <!--           <input type="text" class="form-control mb-2" formControlName="name" /> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <div class="mb-3"> -->
-  <!--           <label for="fechaInicio" class="form-label">Fecha de Inicio</label> -->
-  <!--           <input type="date" class="form-control" id="initDate" formControlName="initDate" name="initDate" required> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <div class="mb-3"> -->
-  <!--           <label for="fechaFin" class="form-label">Fecha de Fin</label> -->
-  <!--           <input type="date" class="form-control" id="endDate" name="endDate" formControlName="endDate" required> -->
-  <!--         </div> -->
-  <!---->
-  <!--       <div class="mb-3"> -->
-  <!--           <label for="diasTomados" class="form-label">Días Tomados</label> -->
-  <!--           <input type="text" class="form-control" id="diasTomados" name="diasTomados" formControlName="daysTaken" readonly> -->
-  <!--       </div> -->
-  <!---->
-  <!--       <button type="submit" class="btn btn-primary">Guardar</button> -->
-  <!--       <button type="button" class="btn btn-danger mx-2" (click)="onCancel()">Cancelar</button> -->
-  <!--   </form> -->
 </div>
-
-<!-- <div class="container">
-    <h2>Asignar Vacaciones</h2>
-
-    <form>
-      <div class="mb-3">
-        <label for="nombreEmpleado" class="form-label">Nombre del Empleado</label>
-        <input type="text" class="form-control" id="nombreEmpleado" name="nombreEmpleado" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
-        <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="fechaFin" class="form-label">Fecha de Fin</label>
-        <input type="date" class="form-control" id="fechaFin" name="fechaFin" required>
-      </div>
-
-      <div class="mb-3">
-        <label for="comentarios" class="form-label">Comentarios</label>
-        <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Asignar Vacaciones</button>
-    </form>
-  </div>
-   -->
