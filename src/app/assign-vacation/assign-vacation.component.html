@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3 border-right">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-        <img class="rounded-circle mt-5" width="150px" src="https://shorturl.at/BGPS5" alt="">
+        <img class="rounded-circle" width="150px" src="https://shorturl.at/BGPS5" alt="">
         <span class="fw-bold">{{ employeeFullName }}</span>
         <span class="text-black-50">{{ employeePosition }}</span>
       </div>
@@ -24,11 +24,14 @@
             </div>
           </div>
           <div class="row mt-3">
-            <div class="col-md-12 d-grid gap-2">
+            <div class="col-12 col-md-6 d-grid gap-2 mb-2 mb-md-0"> <!-- Columna para dispositivos medianos y superiores -->
               <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col-12 col-md-6 d-grid gap-2"> <!-- Columna para dispositivos medianos y superiores -->
               <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
             </div>
           </div>
+
         </form>
       </div>
     </div>
