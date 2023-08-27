@@ -74,7 +74,6 @@ export class AssignVacationComponent implements OnInit {
       } else {
         this.vacationForm.get('daysTaken')?.setValue(daysTaken);
         this.dateActivate = true;
-        console.log('dateActivate-->', this.dateActivate);
       }
     } else {
       this.vacationForm.get('daysTaken')?.setValue('');

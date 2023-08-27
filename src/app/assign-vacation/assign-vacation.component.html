@@ -42,7 +42,7 @@
           {{ daysRemaining }} días disponibles
         </h4>
       </div>
-      <div [hidden]="dateActivate === false" class="row d-flex justify-content-center px-4">
+      <div [ngClass]="{'d-none': !dateActivate}" class="row d-flex justify-content-center px-4">
         <div class="col-md-5 p-2">
           <div class="text-secondary text-center fw-semibold w-100">Desde</div>
           <div class="bg-white shadow-sm rounded-4 card">
