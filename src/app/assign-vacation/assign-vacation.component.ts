@@ -43,23 +43,23 @@ export class AssignVacationComponent implements OnInit {
     const employeeCurrent = this.employeeService.getEmployeeCurrent();
     this.employeeFullName = `${ employeeCurrent.name  } ${ employeeCurrent.lastName }`;
     this.employeePosition = this.employeeService.getEmployeeCurrent().position;
-    this.daysRemaining = `${ employeeCurrent.workInformation.remainingDays }`;    
+    this.daysRemaining = `${ employeeCurrent.workInformation.remainingDays }`;
 
   }
 
   calculardaysTaken() {
     const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-    
+    const months = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+
     const fechaInicio = new Date(this.vacationForm.get('initDate')?.value);
     const fechaFin = new Date(this.vacationForm.get('endDate')?.value);
     console.log('fechaInicio--> ', fechaInicio, 'fechaFin--> ', fechaFin);
-    
-    
+
+
     this.dayInicio = days[fechaInicio.getDay() + 1];
     this.monthInicio = months[fechaInicio.getMonth()];
     this.dateInicio = fechaInicio.getDate() + 1;
-        
+
     this.dayFin = days[fechaFin.getDay() + 1];
     this.monthFin = months[fechaFin.getMonth()];
     this.dateFin = fechaFin.getDate() + 1;
