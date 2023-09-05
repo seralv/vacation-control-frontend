@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
-import { VacationService } from '../vacation.service';
+import { WorkInformationService } from '../work-information.service';
 
 @Component({
   selector: 'app-assign-vacation',
@@ -26,7 +26,7 @@ export class AssignVacationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
-    private vacationService: VacationService,
+    private workInformationService: WorkInformationService,
     private router: Router) {}
 
   ngOnInit(): void {
@@ -85,7 +85,7 @@ export class AssignVacationComponent implements OnInit {
         ...this.vacationForm.value
       }
 
-      this.vacationService.createVacation(data).subscribe(() => {
+      this.workInformationService.createVacation(data).subscribe(() => {
         this.router.navigate(['/']);
       });
     }
