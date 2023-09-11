@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { WorkInformationService } from '../work-information.service';
+import { VacationService } from '../vacation.service';
 
 @Component({
   selector: 'app-assign-vacation',
@@ -27,6 +28,7 @@ export class AssignVacationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
     private workInformationService: WorkInformationService,
+    private vacationService: VacationService,
     private router: Router) {}
 
   ngOnInit(): void {
@@ -53,8 +55,6 @@ export class AssignVacationComponent implements OnInit {
 
     const fechaInicio = new Date(this.vacationForm.get('initDate')?.value);
     const fechaFin = new Date(this.vacationForm.get('endDate')?.value);
-    console.log('fechaInicio--> ', fechaInicio, 'fechaFin--> ', fechaFin);
-
 
     this.dayInicio = days[fechaInicio.getDay() + 1];
     this.monthInicio = months[fechaInicio.getMonth()];
@@ -85,7 +85,7 @@ export class AssignVacationComponent implements OnInit {
         ...this.vacationForm.value
       }
 
-      this.workInformationService.createVacation(data).subscribe(() => {
+      this.vacationService.createVacation(data).subscribe(() => {
         this.router.navigate(['/']);
       });
     }

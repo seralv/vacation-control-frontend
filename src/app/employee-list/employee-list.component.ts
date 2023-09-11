@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { VacationService } from '../vacation.service';
+import { WorkInformationService } from '../work-information.service';
 import Swal from 'sweetalert2';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
@@ -20,6 +21,7 @@ export class EmployeeListComponent implements OnInit {
     private router: Router,
     private employeeService: EmployeeService,
     private vacationService: VacationService,
+    private workInformation: WorkInformationService,
     ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(data => {
       this.employees = data;
 
-      this.vacationService.getVacations().subscribe(vacations => {
+      this.workInformation.getWorkInformations().subscribe(vacations => {
         this.employees.forEach(employee => {
           const employeeVacations = vacations.filter(vacation => vacation.employee === employee.id);
           employee.vacation = employeeVacations;

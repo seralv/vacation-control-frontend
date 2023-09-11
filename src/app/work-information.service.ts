@@ -19,11 +19,11 @@ export class WorkInformationService {
   }
 
   createWorkInformation(vacation: any): Observable<any> {
-    return this.http.post(this.baseUrl, work_information);
+    return this.http.post(this.baseUrl, this.work_information);
   }
 
   updateWorkInformation(id: number, vacation: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}${id}/`, work_information);
+    return this.http.put(`${this.baseUrl}${id}/`, this.work_information);
   }
 
   deleteWorkInformation(id: number): Observable<any> {
@@ -42,5 +42,4 @@ export class WorkInformationService {
   getWorkInformationCurrent() {
     return this.work_information;
   }
-
 }
